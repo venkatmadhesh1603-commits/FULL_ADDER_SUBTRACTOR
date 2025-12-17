@@ -37,19 +37,69 @@ Diff = A ⊕ B ⊕ Bin
 Borrow out = A'Bin + A'B + BBin
 
 **Truthtable**
+Truth Table for Full adder:
+A	B	C	Sum	Carry
+0	0	0	0	0
+0	0	1	1	0
+0	1	0	1	0
+0	1	1	0	1
+1	0	0	1	0
+1	0	1	0	1
+1	1	0	0	1
+1	1	1	1	1
+
+Truth Table for Full subractor:
+A	B	B  Diff	Bout
+0	0	0	0	0
+0	0	1	1	1
+0	1	0	1	1
+0	1	1	0	1
+1	0	0	1	0
+1	0	1	0	0
+1	1	0	0	0
+1	1	1	1	1
 
 **Procedure**
+Full adder Procedure:
+Take three inputs: A, B, and Carry-in (Cin).
 
-Write the detailed procedure here
+Add the three inputs using logic gates.
+
+Use XOR gates to get the Sum of the three bits.
+
+Use AND and OR gates to find the Carry-out (Cout).
+
+Sum shows the final bit, and Cout shows the carry generated.
+
+Full subractor Procedure:
+Take three inputs: A, B, and Borrow-in (Bin).
+
+Subtract B and Bin from A using logic gates.
+
+Use XOR gates to get the Difference.
+
+Use AND and OR gates to get the Borrow-out (Bout).
+
+Difference shows output bit, and Bout shows borrow needed.
 
 **Program:**
+```
+module exp4(A,B,C,X,Y,Z,Sum,Carry,Diff,Bout);
+input A,B,C,X,Y,Z;
+output Sum,Carry,Diff,Bout;
+xor g1(Sum,A,B,C);
+assign Carry= (A&B)|(B&C)|(A&C);
+xor g2(Diff,X,Y,Z);
+assign Bout= (~X&Z)|(Y&Z)|(~X&Y);
+endmodule
 
-/* Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+```
 
 **RTL Schematic**
+![alt text](<Screenshot 2025-11-17 213629.png>)
 
 **Output Timing Waveform**
+![alt text](<Screenshot 2025-11-17 214300.png>)
 
 **Result:**
 
